@@ -1,6 +1,7 @@
 ---
 services:
   - docker
+dist: focal
 sudo: false
 git:
   depth: false
