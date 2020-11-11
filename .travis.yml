@@ -12,6 +12,9 @@ go:
   - 1.12.x
 script:
   - make docker-build
+  - make build
+  - make unit-test
+  - make integration-test
 
 # after_success:
 #   - bash <(curl -s https://codecov.io/bash) || echo "Failed to report code coverage!"
