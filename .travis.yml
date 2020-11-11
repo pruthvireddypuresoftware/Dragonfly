@@ -2,13 +2,17 @@
 services:
   - docker
 dist: focal
-sudo: false
+sudo: required
 git:
   depth: false
 language: go
 go:
   - 1.12.x
 script:
+  - apt update && apt install docker.io
+  - docker version
+  - export DOCKER_CLI_EXPERIMENTAL=enabled
+  - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
   - make docker-build
 
 # after_success:
