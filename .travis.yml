@@ -1,7 +1,9 @@
 ---
 services:
   - docker
-dist: focal
+arch:
+  - amd64
+  - arm64
 sudo: required
 git:
   depth: false
@@ -9,11 +11,6 @@ language: go
 go:
   - 1.12.x
 script:
-  - sudo apt update && sudo apt install docker.io
-  - docker version
-  - export DOCKER_CLI_EXPERIMENTAL=enabled
-  - echo '{"experimental":true}' | sudo tee /etc/docker/daemon.json
-  - docker version
   - make docker-build
 
 # after_success:
