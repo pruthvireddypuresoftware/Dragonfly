@@ -153,9 +153,7 @@ workflows:
   version: 2
   ci:
     jobs:
-      - linters-check
-      - unit-test-golang
-      - api-integration-test
+      - build-images
 
   release:
     jobs:
