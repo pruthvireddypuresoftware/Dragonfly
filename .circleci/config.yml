@@ -119,7 +119,7 @@ jobs:
   build-images:
     docker:
       - image: jdrouet/docker-with-buildx:stable
-    working_directory: ./
+    working_directory: /go/src/github.com/dragonflyoss/Dragonfly
     steps:
       - checkout
       - setup_remote_docker:
