@@ -131,14 +131,14 @@ jobs:
           name: push images
           command: |
             echo "Reddy_1991" | docker login -u "pruthvireddypuresoftware" --password-stdin
-            docker tag dfclient:$DF_VERSION dragonflyoss/dfclient:$DF_VERSION
-            docker tag supernode:$DF_VERSION dragonflyoss/supernode:$DF_VERSION
-            docker tag dfclient:$DF_VERSION dragonflyoss/dfclient:latest
-            docker tag supernode:$DF_VERSION dragonflyoss/supernode:latest
-            docker push dragonflyoss/dfclient:$DF_VERSION
-            docker push dragonflyoss/supernode:$DF_VERSION
-            docker push dragonflyoss/dfclient:latest
-            docker push dragonflyoss/supernode:latest
+            docker tag dfclient:$DF_VERSION pruthvireddypuresoftware/dfclient:$DF_VERSION
+            docker tag supernode:$DF_VERSION pruthvireddypuresoftware/supernode:$DF_VERSION
+            docker tag dfclient:$DF_VERSION pruthvireddypuresoftware/dfclient:latest
+            docker tag supernode:$DF_VERSION pruthvireddypuresoftware/supernode:latest
+            docker push pruthvireddypuresoftware/dfclient:$DF_VERSION
+            docker push pruthvireddypuresoftware/supernode:$DF_VERSION
+            docker push pruthvireddypuresoftware/dfclient:latest
+            docker push pruthvireddypuresoftware/supernode:latest
       - go/save-cache
 
 workflows:
