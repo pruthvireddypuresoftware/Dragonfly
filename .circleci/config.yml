@@ -119,7 +119,7 @@ jobs:
   # TODO(yeya24): Consider changing to use goreleaser to publish images later
   publish-images:
     docker:
-      - image: circleci/golang:1.12.10
+      - image: jdrouet/docker-with-buildx:stable
     working_directory: /go/src/github.com/dragonflyoss/Dragonfly
     steps:
       - checkout
@@ -130,8 +130,6 @@ jobs:
       - run:
           name: push images
           command: |
-            export DOCKER_CLI_EXPERIMENTAL=enabled
-            docker run --rm --privileged docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
             echo "Reddy_1991" | docker login -u "pruthvireddypuresoftware" --password-stdin
             docker buildx build --platform linux/amd64,linux/arm64 --push -t pruthvireddypuresoftware/supernode:1.6 -f Dockerfile.supernode .
             docker buildx build --platform linux/amd64,linux/arm64 --push -t pruthvireddypuresoftware/dfclient:1.6 -f Dockerfile .
