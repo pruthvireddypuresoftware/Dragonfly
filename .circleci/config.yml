@@ -115,7 +115,21 @@ jobs:
           command: echo 'export DATE=$(date "+%Y%m%d-%H:%M:%S")' >> $BASH_ENV
       - run: curl -sL https://git.io/goreleaser | bash
       - go/save-cache
-
+  
+  build-images:
+    docker:
+      - image: jdrouet/docker-with-buildx:stable
+    working_directory: ./
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 18.09.3
+      - run: docker login -u "pruthvireddypuresoftware" -p "Reddy_1991"
+      - run: |
+          docker buildx build --push \
+            --build-arg CI_NAME=circleci \
+            --platform linux/arm64/v8,linux/amd64 \
+            --tag pruthvireddypuresoftware/dfclient:1.6 .
   # TODO(yeya24): Consider changing to use goreleaser to publish images later
   publish-images:
     docker:
