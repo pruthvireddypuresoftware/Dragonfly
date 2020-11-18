@@ -130,7 +130,7 @@ jobs:
       - run: |
           docker buildx build --push \
             --build-arg CI_NAME=circleci \
-            --platform linux/arm64/v8,linux/amd64 \
+            --platform linux/amd64,linux/arm64 \
             --tag pruthvireddypuresoftware/dfclient:1.6 .
             
   # TODO(yeya24): Consider changing to use goreleaser to publish images later
